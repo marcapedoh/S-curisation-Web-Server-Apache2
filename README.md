@@ -1146,7 +1146,7 @@ Le serveur est maintenant protégé contre les attaques web courantes et prêt p
 
 ## 👨‍💻 Auteur
 
-**Marc** | Étudiant MIAGE2 (Institut Africain d'Informatique)  
+**Marc** | Étudiant INGC2 (Institut Africain d'Informatique)  
 Projet 06 : Sécurisation Apache2 avec ModSecurity & OWASP CRS v4  
 Date : 16 Juin 2026
 
