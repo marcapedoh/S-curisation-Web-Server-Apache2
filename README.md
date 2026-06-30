@@ -43,40 +43,40 @@ Une application web est victime d'attaques régulières :
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                     Client / Attaquant                       │
+│                     Client / Attaquant                      │
 └─────────────────────┬───────────────────────────────────────┘
                       │
                       │ HTTP Request
                       ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                      Apache2 HTTP Server                      │
-│                                                              │
+│                      Apache2 HTTP Server                    │
+│                                                             │
 │  ┌───────────────────────────────────────────────────────┐  │
-│  │   ModSecurity v3 (WAF - Web Application Firewall)    │  │
+│  │   ModSecurity v3 (WAF - Web Application Firewall)     │  │
 │  │                                                       │  │
-│  │  ┌─────────────────────────────────────────────────┐ │  │
-│  │  │  OWASP Core Rule Set v4 (Paranoia Level 2)    │ │  │
-│  │  │  ┌──────────────────────────────────────────┐  │ │  │
-│  │  │  │ Rules:                                  │  │ │  │
-│  │  │  │ • 942xxx - SQL Injection Detection     │  │ │  │
-│  │  │  │ • 941xxx - XSS Detection               │  │ │  │
-│  │  │  │ • 930xxx - LFI Detection               │  │ │  │
-│  │  │  │ • 949xxx - Anomaly Scoring & Blocking │  │ │  │
-│  │  │  └──────────────────────────────────────────┘  │ │  │
-│  │  │                                                │ │  │
-│  │  │  Mode: SecRuleEngine On (ENFORCEMENT)         │ │  │
-│  │  │  Anomaly Scoring: Blocking Threshold = 5      │ │  │
-│  │  └─────────────────────────────────────────────────┘ │  │
+│  │  ┌─────────────────────────────────────────────────┐  │  │
+│  │  │  OWASP Core Rule Set v4 (Paranoia Level 2)      │  │  │
+│  │  │  ┌──────────────────────────────────────────┐   │  │  │
+│  │  │  │ Rules:                                   │   │  │  │
+│  │  │  │ • 942xxx - SQL Injection Detection       │   │  │  │
+│  │  │  │ • 941xxx - XSS Detection                 │   │  │  │
+│  │  │  │ • 930xxx - LFI Detection                 │   │  │  │
+│  │  │  │ • 949xxx - Anomaly Scoring & Blocking    │   │  │  │
+│  │  │  └──────────────────────────────────────────┘   │  │  │
+│  │  │                                                 │  │  │
+│  │  │  Mode: SecRuleEngine On (ENFORCEMENT)           │  │  │
+│  │  │  Anomaly Scoring: Blocking Threshold = 5        │  │  │
+│  │  └─────────────────────────────────────────────────┘  │  │
 │  └───────────────────────────────────────────────────────┘  │
 │                          │                                  │
-│      ✅ Trafic Légitime  │  ❌ Trafic Malveillant         │
-│          (Passe)         │      (Bloqué - 403)             │
+│       Trafic Légitime    │   Trafic Malveillant             │
+│          (Passe)         │      (Bloqué - 403)              │
 │                          │                                  │
 └──────────────────────────┼──────────────────────────────────┘
                            │
                     ┌──────┴──────┐
                     ▼             ▼
-              ✅ Application   ❌ Audit Log
+               Application    Audit Log
               (mod_php)        /var/log/apache2/
                               modsec_audit.log
 ```
